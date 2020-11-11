@@ -1,0 +1,216 @@
+# Shana Green
+# R Bridge 
+# Final Project
+# Due 08/01/20
+
+
+Voltage Drop for a Discharging Capacitor
+
+
+```{r}
+# loading the data set
+
+volts<- read.csv("Volts.csv")
+
+```
+
+A capacitor is a device that stores electrical energy in an electric field. It is a passive electronic component with two terminals. Capacitors typically discharge slowly when a resistor is connected to each leg. The resistor must be rated for the same or higher voltage than the capacitor can store for this method of discharge in order to work safely. Let's take a look at the summary of the Voltage Drop for a Discharging Capacitor:
+
+```{r}
+
+summary(volts)
+
+View(volts)
+
+```
+
+Upon reviewing the .csv file, one can see that as time progresses, the voltage drop decreases. Based on the file, is there a correlation between average rate of voltage decay for capacitors over time?
+
+Let's analyze the original volt.csv file. 
+```{r}
+#mean
+
+mean(volts$X, na.rm = TRUE)
+mean(volts$Voltage, na.rm = TRUE)
+mean(volts$Time, ra.rm = TRUE)
+
+```
+
+
+
+```{r}
+#median
+
+median(volts$X, na.rm = TRUE)
+median(volts$Voltage, ra.rm = TRUE)
+median(volts$Time, ra.rm = TRUE)
+
+```
+
+I will compare the voltage decay by creating two new data frames with a subset of the columns and rows. 
+
+```{r}
+halfvolts<-subset(volts[c(1:25),c("X","Voltage","Time")])
+View(halfvolts)
+
+secondhalfvolts<-subset(volts[c(26:50),c("X","Voltage","Time")])
+View(secondhalfvolts)
+```
+
+
+```{r}
+
+summary(halfvolts)
+
+#mean
+
+mean(halfvolts$X, na.rm = TRUE)
+mean(halfvolts$Voltage, na.rm = TRUE)
+mean(halfvolts$Time, ra.rm = TRUE)
+
+#median
+
+median(halfvolts$X, na.rm = TRUE)
+median(halfvolts$Voltage, na.rm = TRUE)
+median(halfvolts$Time, ra.rm = TRUE)
+```
+
+```{r}
+
+summary(secondhalfvolts)
+
+#mean
+
+mean(secondhalfvolts$X, na.rm = TRUE)
+mean(secondhalfvolts$Voltage, na.rm = TRUE)
+mean(secondhalfvolts$Time, ra.rm = TRUE)
+
+#median
+
+median(secondhalfvolts$X, na.rm = TRUE)
+median(secondhalfvolts$Voltage, na.rm = TRUE)
+median(secondhalfvolts$Time, ra.rm = TRUE)
+
+```
+
+```{r}
+
+#Scatter plot of volts
+
+plot(volts$Time, volts$Voltage,xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='blue') 
+
+```
+
+```{r}
+
+#Scatter plot of half volts
+
+
+plot(halfvolts$Time, halfvolts$Voltage, xlab = 'Time', ylab = 'Voltage', main = 'Half Volts', ylim = c(0,10), pch = 20 , col='red') 
+
+```
+
+```{r}
+
+#Scatter plot of second half volts
+
+plot(secondhalfvolts$Time, secondhalfvolts$Voltage, xlab = 'Time', ylab = 'Voltage', main = 'Second Half Volts', ylim = c(0,10), pch = 20 , col='green') 
+
+```
+
+```{r}
+
+# Box plot of volts
+
+boxplot(volts, col="blue")
+
+```
+
+```{r}
+
+#Box plot of half volts
+
+boxplot(halfvolts,col="red") 
+
+```
+
+```{r}
+
+#Box plot of second half volts
+
+boxplot(secondhalfvolts,col="green")
+
+```
+
+
+
+```{r}
+
+#Histogram of volts in respect to time
+
+hist(volts$Time, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='blue')
+
+
+```
+
+```{r}
+
+#Histogram of volts in respect to Voltage
+
+hist(volts$Voltage, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='blue')
+
+
+```
+
+
+
+```{r}
+
+#Histogram of half volts in respect to time
+
+hist(halfvolts$Time, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='red')
+
+
+```
+
+
+```{r}
+
+#Histogram of half volts in respect to voltage
+
+hist(halfvolts$Voltage, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='red')
+
+
+```
+
+
+```{r}
+
+#Histogram of second half volts in respect to time
+
+hist(secondhalfvolts$Time, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='green')
+
+
+```
+
+```{r}
+
+#Histogram of second half volts in respect to voltage
+
+hist(secondhalfvolts$Voltage, xlab = 'Time', ylab = 'Voltage', main = 'Volts', ylim = c(0,10), pch = 20 , col='green')
+
+
+```
+
+Based on the data provided, the mean voltage drop of the original .csv is 3.87V with an average time of 0.49 seconds. The initial voltage drop of at t = 0 is 9.2128V. Half volts had an average voltage drop of 5.723V with an average time of 0.24 seconds. Second half volts had an average voltage drop of 2.024V with an average time of 0.74 seconds. The capacitor discharge equation is V = Voe-(t/RC).When t = RC, V = Vo/e = 0.37 Vo and the product RC is known as the time constant for the circuit. The bigger the value of RC, the slower the rate at which the capacitor discharges. The average rate of voltage drop is dependent in respect to time. 
+
+
+
+
+```{r}
+#BONUS
+
+volts<- read.csv("https://raw.githubusercontent.com/sagreen131/R-Week-3/master/Volts.csv")
+
+
+```

@@ -1,0 +1,61 @@
+# Shana Green
+# R Bridge 
+# HW 1
+# Due 07/19/20
+
+# 1. Write a loop that calculates 12-factorial**
+
+
+```{r}
+factorial <- 1 
+for (i in 12:1) { 
+     factorial = factorial * i 
+      }
+factorial
+```
+
+# 2. Show how to create a numeric vector that contains the sequence from 20 to 50 by 5**
+    
+```{r}
+numvec <-c(seq(20,50, by = 5))
+numvec
+
+```
+    
+# 3. Create the function "quadratic" that takes a trio of input numbers a, b, and c and solve the quadratic equation. The function should print as output the two solutions.**
+   
+
+
+```{r}
+
+quadratic<- function(a, b, c){
+    
+
+    discriminant = (b^2) - (4*a*c)
+
+            if (discriminant< 0) 
+                {
+                
+                return(print("No real roots!"))
+            }
+    
+                else if (discriminant > 0) {
+                    
+                    posroot <- (-b + sqrt(discriminant)) / (2*a)
+                    negroot <- (-b - sqrt(discriminant)) / (2*a)
+                    
+                    return(posroot)
+                    return(negroot)
+                }
+                     else {
+                         x_intercept <- (-b)/ (2*a)
+                     return(print("This quadratic equation has only one root.                               The root is ", x_intercept))
+                           }
+
+    }
+quadratic(1,6,5)
+```
+```
+I was unable to tweak program to print double negative roots!"]
+
+```
